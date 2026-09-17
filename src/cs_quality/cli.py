@@ -8,31 +8,40 @@ from hallucination_guard.cli import main as run_hallucination
 from .kb_governance import audit_kb, load_articles, write_kb_reports
 from .reply_eval import evaluate_replies, load_json_list, write_reply_reports
 from .ticket_intel import analyze_tickets, load_tickets, write_ticket_reports
+from .theme import page_foot, page_head
 
 
 ROOT = Path.cwd()
 
 
 def _index_html() -> str:
-    return """<!doctype html>
-<html lang="zh-CN"><head><meta charset="utf-8">
-<title>客服 AI 质量实验室</title>
-<style>
-body{margin:0;font:16px/1.5 Inter,"Segoe UI","Microsoft YaHei",sans-serif;background:#f4f6f9;color:#172033}
-main{max-width:880px;margin:48px auto;padding:0 24px}
-a.card{display:block;background:#fff;border:1px solid #e7eaf0;border-radius:16px;padding:22px;margin:14px 0;text-decoration:none;color:inherit}
-a.card:hover{border-color:#356ae6}
-h1{font-size:32px} p{color:#667085}
-</style></head>
-<body><main>
-<h1>客服 AI 质量实验室</h1>
-<p>四题共用 Mock LLM。点进各报告查看指标、异常和逐条结果。</p>
-<a class="card" href="0110-hallucination/dashboard.html"><b>0110 幻觉检测</b><br>20 条回复 vs 知识库，精确率/召回率</a>
-<a class="card" href="0109-reply-eval/dashboard.html"><b>0109 自动回复质量</b><br>准确 / 有用 / 语气 / 不瞎编</a>
-<a class="card" href="0111-tickets/dashboard.html"><b>0111 工单趋势</b><br>50 条工单的趋势、异常、未关闭清单</a>
-<a class="card" href="0112-kb/dashboard.html"><b>0112 知识库治理</b><br>过时、重复、空答案与覆盖缺口</a>
-</main></body></html>
-"""
+    arrow = (
+        '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">'
+        '<path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" '
+        'stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+    )
+    tasks = [
+        ("0110", "幻觉检测", "20 条回复对照知识库，输出精确率与召回率", "0110-hallucination/dashboard.html"),
+        ("0109", "自动回复质量", "准确 / 有用 / 语气 / 不瞎编，四维打分", "0109-reply-eval/dashboard.html"),
+        ("0111", "工单趋势", "50 条工单的趋势、异常与未关闭清单", "0111-tickets/dashboard.html"),
+        ("0112", "知识库治理", "过时、重复、空答案与覆盖缺口", "0112-kb/dashboard.html"),
+    ]
+    links = "".join(
+        f'<a class="task reveal" style="--d:{index + 2}" href="{href}">'
+        f'<div class="code">{code}</div>'
+        f"<div><b>{title}</b><span>{desc}</span></div>{arrow}</a>"
+        for index, (code, title, desc, href) in enumerate(tasks)
+    )
+    return (
+        page_head("客服 AI 质量实验室")
+        + f"""<div class="index-wrap">
+<div class="eyebrow reveal">CS QUALITY LAB · MOCK LLM</div>
+<h1 class="reveal" style="--d:1">客服 AI 质量实验室</h1>
+<p class="reveal" style="--d:1">四题共用 Mock LLM。点进各报告查看指标、异常和逐条结果。</p>
+{links}
+</div>"""
+        + page_foot()
+    )
 
 
 def run_0110() -> int:

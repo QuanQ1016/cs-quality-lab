@@ -1,12 +1,17 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>客服回复幻觉检测</title>
+"""OLED 操作台主题：黄铜单强调、错开入场、尊重 reduced-motion。"""
+
+from __future__ import annotations
+
+import html
+
+
+FONT_LINKS = """
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;600&family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-<style>
+""".strip()
+
+CSS = r"""
 :root {
   --bg: #07090c;
   --bg-2: #0c1016;
@@ -278,21 +283,9 @@ code { color: var(--brass); font-family: "Fira Code", monospace; font-size: 12px
   .track i { transform: scaleX(var(--fill, 0)); }
   .metric::before, .top::after { transform: none; }
 }
-</style>
-</head>
-<body>
-<header class="top reveal">
-<div class="eyebrow">EVIDENCE-GROUNDED QA</div>
-<h1>客服回复幻觉检测</h1><p>Mock LLM · 证据约束 · 全链路可复现</p>
-<div class="nav"><a href="../index.html">总览</a></div></header>
-<main>
-<section class="metrics"><article class="metric reveal" style="--d:0"><span>准确率</span><strong data-count="100.0" data-prefix="" data-suffix="%" data-decimals="1">100.0%</strong></article><article class="metric reveal" style="--d:1"><span>精确率</span><strong data-count="100.0" data-prefix="" data-suffix="%" data-decimals="1">100.0%</strong></article><article class="metric reveal" style="--d:2"><span>召回率</span><strong data-count="100.0" data-prefix="" data-suffix="%" data-decimals="1">100.0%</strong></article><article class="metric reveal" style="--d:3"><span>F1</span><strong data-count="100.0" data-prefix="" data-suffix="%" data-decimals="1">100.0%</strong></article></section>
-<section class="grid two"><article class="panel reveal" style="--d:4"><h2>混淆矩阵</h2><div class="matrix"><div><span>真阳性 TP</span><b>18</b></div><div><span>误报 FP</span><b>0</b></div><div><span>漏检 FN</span><b>0</b></div><div><span>真阴性 TN</span><b>2</b></div></div></article><article class="panel reveal" style="--d:5"><h2>风险类型分布</h2><div class="bar-row" style="--i:0"><span>FACT_CONTRADICTION</span><div class="track"><i style="--fill:1.0000"></i></div><b>6</b></div><div class="bar-row" style="--i:1"><span>POLICY_CONTRADICTION</span><div class="track"><i style="--fill:0.6667"></i></div><b>4</b></div><div class="bar-row" style="--i:2"><span>TOOL_USE_FABRICATION</span><div class="track"><i style="--fill:0.6667"></i></div><b>4</b></div><div class="bar-row" style="--i:3"><span>UNSUPPORTED_CLAIM</span><div class="track"><i style="--fill:0.3333"></i></div><b>2</b></div><div class="bar-row" style="--i:4"><span>通过</span><div class="track"><i style="--fill:0.3333"></i></div><b>2</b></div><div class="bar-row" style="--i:5"><span>SAFETY_MISGUIDANCE</span><div class="track"><i style="--fill:0.1667"></i></div><b>1</b></div><div class="bar-row" style="--i:6"><span>MATERIAL_OMISSION</span><div class="track"><i style="--fill:0.1667"></i></div><b>1</b></div></article></section>
-<section class="panel wide reveal" style="--d:6"><h2>20 条回复审计明细</h2>
-<div style="overflow:auto"><table><thead><tr><th>ID</th><th>用户问题</th><th>检测结论</th><th>置信度</th><th>验证</th></tr></thead><tbody><tr><td><code>h01</code></td><td>你们支持30天无理由退货吗？</td><td><span class="pill high">POLICY_CONTRADICTION</span></td><td>98%</td><td><span class="tp">TP</span></td></tr><tr><td><code>h02</code></td><td>这个耳机的蓝牙版本是多少？</td><td><span class="pill high">FACT_CONTRADICTION</span></td><td>97%</td><td><span class="tp">TP</span></td></tr><tr><td><code>h03</code></td><td>我的快递到哪了？</td><td><span class="pill high">TOOL_USE_FABRICATION</span></td><td>99%</td><td><span class="tp">TP</span></td></tr><tr><td><code>h04</code></td><td>能开发票吗？</td><td><span class="pill high">POLICY_CONTRADICTION</span></td><td>98%</td><td><span class="tp">TP</span></td></tr><tr><td><code>h05</code></td><td>有没有满300减50的优惠券？</td><td><span class="pill high">UNSUPPORTED_CLAIM</span></td><td>98%</td><td><span class="tp">TP</span></td></tr><tr><td><code>h06</code></td><td>这个包是真皮的吗？</td><td><span class="pill high">FACT_CONTRADICTION</span></td><td>97%</td><td><span class="tp">TP</span></td></tr><tr><td><code>h07</code></td><td>退货地址是什么？</td><td><span class="pill high">POLICY_CONTRADICTION</span></td><td>97%</td><td><span class="tp">TP</span></td></tr><tr><td><code>h08</code></td><td>多久能发货？</td><td><span class="pill high">POLICY_CONTRADICTION</span></td><td>97%</td><td><span class="tp">TP</span></td></tr><tr><td><code>h09</code></td><td>这款手机支持NFC吗？</td><td><span class="pill high">FACT_CONTRADICTION</span></td><td>98%</td><td><span class="tp">TP</span></td></tr><tr><td><code>h10</code></td><td>我昨天退的货什么时候能收到退款？</td><td><span class="pill high">TOOL_USE_FABRICATION</span></td><td>99%</td><td><span class="tp">TP</span></td></tr><tr><td><code>h11</code></td><td>你们有线下门店吗？</td><td><span class="pill high">FACT_CONTRADICTION</span></td><td>98%</td><td><span class="tp">TP</span></td></tr><tr><td><code>h12</code></td><td>可以货到付款吗？</td><td><span class="pill none">通过</span></td><td>96%</td><td><span class="tn">TN</span></td></tr><tr><td><code>h13</code></td><td>这个面膜孕妇能用吗？</td><td><span class="pill critical">SAFETY_MISGUIDANCE</span></td><td>99%</td><td><span class="tp">TP</span></td></tr><tr><td><code>h14</code></td><td>能帮我改一下收货地址吗？订单号DD20240520-1123</td><td><span class="pill critical">TOOL_USE_FABRICATION</span></td><td>99%</td><td><span class="tp">TP</span></td></tr><tr><td><code>h15</code></td><td>你们和XX品牌是一家吗？</td><td><span class="pill high">FACT_CONTRADICTION</span></td><td>98%</td><td><span class="tp">TP</span></td></tr><tr><td><code>h16</code></td><td>商品图片上的颜色准吗？</td><td><span class="pill none">通过</span></td><td>96%</td><td><span class="tn">TN</span></td></tr><tr><td><code>h17</code></td><td>这个充电头是Type-C接口吗？</td><td><span class="pill high">FACT_CONTRADICTION</span></td><td>97%</td><td><span class="tp">TP</span></td></tr><tr><td><code>h18</code></td><td>我要投诉，上次买的东西就是坏的</td><td><span class="pill high">TOOL_USE_FABRICATION</span></td><td>99%</td><td><span class="tp">TP</span></td></tr><tr><td><code>h19</code></td><td>有没有学生优惠？</td><td><span class="pill high">UNSUPPORTED_CLAIM</span></td><td>98%</td><td><span class="tp">TP</span></td></tr><tr><td><code>h20</code></td><td>这双鞋偏大还是偏小？</td><td><span class="pill medium">MATERIAL_OMISSION</span></td><td>94%</td><td><span class="tp">TP</span></td></tr></tbody></table></div>
-</section>
-<p class="foot">报告由 Hallucination Guard 生成。嵌入数据校验值：10369 chars。</p>
-</main><script>
+""".strip()
+
+JS = r"""
 (function () {
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (reduce) return;
@@ -315,5 +308,20 @@ code { color: var(--brass); font-family: "Fira Code", monospace; font-size: 12px
     requestAnimationFrame(tick);
   });
 })();
-</script>
-</body></html>
+""".strip()
+
+
+def page_head(title: str) -> str:
+    return (
+        "<!doctype html>\n<html lang=\"zh-CN\">\n<head>\n"
+        "<meta charset=\"utf-8\">"
+        "<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n"
+        f"<title>{html.escape(title)}</title>\n"
+        f"{FONT_LINKS}\n"
+        f"<style>\n{CSS}\n</style>\n"
+        "</head>\n<body>\n"
+    )
+
+
+def page_foot() -> str:
+    return f"<script>\n{JS}\n</script>\n</body></html>"

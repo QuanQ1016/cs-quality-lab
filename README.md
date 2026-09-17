@@ -4,6 +4,9 @@
 
 官方规则是任选一题。这里四题都做完了，每题都有独立指标、报告和 Dashboard，可以按题提交，也可以整包提交。
 
+- 仓库：[github.com/QuanQ1016/cs-quality-lab](https://github.com/QuanQ1016/cs-quality-lab)
+- 在线报告：https://cs-quality-lab.vercel.app
+
 ## 一分钟跑起来
 
 Python 3.10+，无第三方运行依赖。
@@ -35,6 +38,34 @@ python -m hallucination_guard.cli
 | **0112 知识库治理** | 40 条 FAQ | 14 条有问题（过时/重复/空答案）+ 1 个覆盖缺口 |
 
 数字来自本次 Mock 运行，可复现。0110 的 100% 只说明当前验收集上流水线正确，不是线上泛化承诺。
+
+## 报告截图
+
+评委可以直接看图，或打开上面的在线报告点进各题 Dashboard。
+
+开发过程（IDE + 飞书题目数据）：
+
+![开发过程](image/01-dev-process-ide.png)
+
+总览：
+
+![报告总览](image/02-index.png)
+
+0110 幻觉检测：
+
+![0110 幻觉检测](image/03-0110-hallucination.png)
+
+0109 自动回复质量：
+
+![0109 自动回复质量](image/04-0109-reply-eval.png)
+
+0111 工单趋势：
+
+![0111 工单趋势](image/05-0111-tickets.png)
+
+0112 知识库治理：
+
+![0112 知识库治理](image/06-0112-kb.png)
 
 ## 0109 · 自动回复质量评估
 
@@ -84,6 +115,7 @@ python -m hallucination_guard.cli
 
 ```text
 data/          题目附件原文
+image/         报告截图（README 预览用）
 src/hallucination_guard/   0110
 src/cs_quality/            0109 / 0111 / 0112 + 统一入口
 tests/
