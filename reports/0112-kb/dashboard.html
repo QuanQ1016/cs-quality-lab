@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>知识库条目质量治理</title>
+<style>
+:root{--ink:#172033;--muted:#667085;--paper:#f4f6f9;--card:#fff;--navy:#14213d;
+--blue:#356ae6;--cyan:#2bb5a8;--red:#d64550}
+*{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);
+font:14px/1.5 Inter,"Segoe UI","Microsoft YaHei",sans-serif}
+.top{background:var(--navy);color:#fff;padding:42px max(6vw,24px) 78px}
+.eyebrow{color:#89a9f5;letter-spacing:.14em;font-size:12px;font-weight:700}
+h1{font-size:34px;margin:8px 0} .top p{color:#bdc7dc;margin:0}
+main{max-width:1180px;margin:-48px auto 56px;padding:0 24px}
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.metric,.panel{background:var(--card);border:1px solid #e7eaf0;border-radius:14px;
+box-shadow:0 8px 24px #14213d0d} .metric{padding:22px}
+.metric span{display:block;color:var(--muted)} .metric strong{font-size:28px}
+.grid{display:grid;gap:18px;margin-top:18px} .two{grid-template-columns:1fr 1fr}
+.panel{padding:24px} h2{font-size:18px;margin:0 0 16px}
+.bar-row{display:grid;grid-template-columns:140px 1fr 36px;gap:10px;align-items:center;margin:10px 0}
+.track{height:9px;background:#edf0f5;border-radius:9px;overflow:hidden}
+.track i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:9px}
+.wide{margin-top:18px} table{width:100%;border-collapse:collapse}
+th,td{padding:11px 10px;text-align:left;border-bottom:1px solid #edf0f5;vertical-align:top}
+th{color:var(--muted);font-size:12px} .pill{display:inline-block;padding:3px 8px;
+border-radius:99px;background:#edf2ff;color:#2857bf}
+.bad{color:var(--red);font-weight:700} .ok{color:#08765d;font-weight:700}
+.nav{margin:12px 0 0} .nav a{color:#c9d7ff;margin-right:16px}
+.foot{color:var(--muted);font-size:12px;margin-top:18px}
+@media(max-width:760px){.metrics,.two{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header class="top"><div class="eyebrow">KNOWLEDGE GOVERNANCE</div>
+<h1>知识库条目质量治理</h1><p>过时 / 冲突 / 空答案 / 缺口 · 对照 2024-06 业务规则</p>
+<div class="nav"><a href="../index.html">总览</a></div></header>
+<main>
+<section class="metrics"><article class="metric"><span>扫描条目</span><strong>40</strong></article><article class="metric"><span>问题条目</span><strong>14</strong></article><article class="metric"><span>覆盖缺口</span><strong>1</strong></article><article class="metric"><span>优先处理</span><strong>8</strong></article></section>
+<section class="grid two"><article class="panel"><h2>问题类型</h2><div class="bar-row"><span>DUPLICATE</span><div class="track"><i style="width:18.2%"></i></div><b>2</b></div><div class="bar-row"><span>OUTDATED</span><div class="track"><i style="width:100.0%"></i></div><b>11</b></div><div class="bar-row"><span>INCOMPLETE</span><div class="track"><i style="width:18.2%"></i></div><b>2</b></div></article><article class="panel"><h2>治理建议逻辑</h2><ul><li>与现行规则冲突 → 修改</li><li>同一问题多答案 → 合并，保留新规则</li><li>空答案 → 补全或删除</li><li>规则有、FAQ 无 → 新增</li></ul></article></section>
+<section class="panel wide"><h2>问题条目清单</h2>
+<div style="overflow:auto"><table><thead><tr><th>ID</th><th>问题</th><th>类型</th><th>建议</th></tr></thead><tbody><tr><td>KB001</td><td>退货政策是什么？</td><td>DUPLICATE</td><td>与 KB039 合并，只保留现行规则</td></tr><tr><td>KB002</td><td>退货运费谁出？</td><td>OUTDATED</td><td>按质量/非质量拆开写</td></tr><tr><td>KB005</td><td>多久能发货？</td><td>OUTDATED</td><td>按现行物流规则改写</td></tr><tr><td>KB006</td><td>用的什么快递？</td><td>OUTDATED</td><td>按现行物流规则改写</td></tr><tr><td>KB008</td><td>可以货到付款吗？</td><td>OUTDATED</td><td>改为不支持货到付款</td></tr><tr><td>KB010</td><td>可以开发票吗？</td><td>OUTDATED</td><td>改为订单详情页申请电子发票</td></tr><tr><td>KB011</td><td>怎么申请发票？</td><td>OUTDATED</td><td>改为订单详情页申请电子发票</td></tr><tr><td>KB012</td><td>会员有什么优惠？</td><td>OUTDATED</td><td>按现行会员规则改写</td></tr><tr><td>KB014</td><td>有优惠券吗？</td><td>OUTDATED</td><td>更新活动文案</td></tr><tr><td>KB015</td><td>优惠券可以叠加使用吗？</td><td>OUTDATED</td><td>改为不可叠加</td></tr><tr><td>KB016</td><td>在线客服工作时间？</td><td>OUTDATED</td><td>改工作时间</td></tr><tr><td>KB032</td><td>商品有保修吗？</td><td>INCOMPLETE</td><td>补全答案或下线该条目</td></tr><tr><td>KB037</td><td>怎么注销账号？</td><td>INCOMPLETE</td><td>补全答案或下线该条目</td></tr><tr><td>KB039</td><td>退货政策是什么？</td><td>OUTDATED、DUPLICATE</td><td>与 KB001 对齐后删除重复条目</td></tr></tbody></table></div>
+</section>
+<p class="foot">0112 · 真值来自 business_context.md，不使用外部模型。</p>
+</main></body></html>

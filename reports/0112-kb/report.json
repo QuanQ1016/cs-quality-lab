@@ -1,0 +1,270 @@
+{
+  "mode": "mock",
+  "taxonomy": {
+    "OUTDATED": "与 2024-06 业务规则冲突，继续用会说错政策。",
+    "DUPLICATE": "同一问题多条且答案打架，检索不稳定。",
+    "INCOMPLETE": "有标题无答案，等于知识空洞。",
+    "COVERAGE_GAP": "现行规则存在但 FAQ 未覆盖。"
+  },
+  "summary": {
+    "total": 40,
+    "flagged": 14,
+    "gaps": 1,
+    "type_counts": {
+      "DUPLICATE": 2,
+      "OUTDATED": 11,
+      "INCOMPLETE": 2
+    }
+  },
+  "narrative": "知识库 40 条中有 14 条带问题。优先处理会直接造成履约错误的条目：KB001, KB002, KB005, KB006, KB008, KB010, KB011, KB012。当前业务规则以 2024-06 摘要为准，与之冲突的条目视为过时或错误，而不是‘另一种说法’。",
+  "priority": [
+    "KB001",
+    "KB002",
+    "KB005",
+    "KB006",
+    "KB008",
+    "KB010",
+    "KB011",
+    "KB012"
+  ],
+  "findings": [
+    {
+      "id": "KB001",
+      "question": "退货政策是什么？",
+      "answer": "我们支持7天无理由退货，质量问题30天内可退换。非质量问题退货运费由买家承担。",
+      "category": "退货政策",
+      "severity": "高",
+      "issues": [
+        {
+          "type": "DUPLICATE",
+          "impact": "同一问题多答案时，机器人会随机抓到错误政策。",
+          "action": "与 KB039 合并，只保留现行规则",
+          "detail": "问题全文重复：退货政策是什么？"
+        }
+      ],
+      "primary_action": "与 KB039 合并，只保留现行规则"
+    },
+    {
+      "id": "KB002",
+      "question": "退货运费谁出？",
+      "answer": "所有退货的运费都由商家承担，您不需要支付任何费用。",
+      "category": "退货政策",
+      "severity": "高",
+      "issues": [
+        {
+          "type": "OUTDATED",
+          "impact": "自动回复会按过时规则承诺，造成拒单、投诉或资损。",
+          "action": "按质量/非质量拆开写",
+          "detail": "非质量问题运费应由买家承担"
+        }
+      ],
+      "primary_action": "按质量/非质量拆开写"
+    },
+    {
+      "id": "KB005",
+      "question": "多久能发货？",
+      "answer": "下单后48小时内发货，使用顺丰快递，大部分地区2-3天到货。",
+      "category": "物流",
+      "severity": "高",
+      "issues": [
+        {
+          "type": "OUTDATED",
+          "impact": "自动回复会按过时规则承诺，造成拒单、投诉或资损。",
+          "action": "按现行物流规则改写",
+          "detail": "发货时效/快递公司与现行 24 小时、中通/韵达/圆通不符"
+        }
+      ],
+      "primary_action": "按现行物流规则改写"
+    },
+    {
+      "id": "KB006",
+      "question": "用的什么快递？",
+      "answer": "我们使用顺丰快递发货，部分地区可能使用中通快递。",
+      "category": "物流",
+      "severity": "高",
+      "issues": [
+        {
+          "type": "OUTDATED",
+          "impact": "自动回复会按过时规则承诺，造成拒单、投诉或资损。",
+          "action": "按现行物流规则改写",
+          "detail": "发货时效/快递公司与现行 24 小时、中通/韵达/圆通不符"
+        }
+      ],
+      "primary_action": "按现行物流规则改写"
+    },
+    {
+      "id": "KB008",
+      "question": "可以货到付款吗？",
+      "answer": "支持的，我们支持货到付款，快递员送到时直接付款即可。",
+      "category": "支付",
+      "severity": "高",
+      "issues": [
+        {
+          "type": "OUTDATED",
+          "impact": "自动回复会按过时规则承诺，造成拒单、投诉或资损。",
+          "action": "改为不支持货到付款",
+          "detail": "仍写支持货到付款"
+        }
+      ],
+      "primary_action": "改为不支持货到付款"
+    },
+    {
+      "id": "KB010",
+      "question": "可以开发票吗？",
+      "answer": "支持电子发票和纸质发票，下单时在备注中填写发票抬头和税号。",
+      "category": "发票",
+      "severity": "高",
+      "issues": [
+        {
+          "type": "OUTDATED",
+          "impact": "自动回复会按过时规则承诺，造成拒单、投诉或资损。",
+          "action": "改为订单详情页申请电子发票",
+          "detail": "仍引导纸质发票/备注开票"
+        }
+      ],
+      "primary_action": "改为订单详情页申请电子发票"
+    },
+    {
+      "id": "KB011",
+      "question": "怎么申请发票？",
+      "answer": "下单时在备注中填写发票抬头和税号，我们会在发货时一起寄出纸质发票。",
+      "category": "发票",
+      "severity": "高",
+      "issues": [
+        {
+          "type": "OUTDATED",
+          "impact": "自动回复会按过时规则承诺，造成拒单、投诉或资损。",
+          "action": "改为订单详情页申请电子发票",
+          "detail": "仍引导纸质发票/备注开票"
+        }
+      ],
+      "primary_action": "改为订单详情页申请电子发票"
+    },
+    {
+      "id": "KB012",
+      "question": "会员有什么优惠？",
+      "answer": "我们有三档会员：普通会员无折扣；银卡会员（累计消费满1000元）享9折；金卡会员（累计消费满5000元）享85折加优先客服。",
+      "category": "会员",
+      "severity": "高",
+      "issues": [
+        {
+          "type": "OUTDATED",
+          "impact": "自动回复会按过时规则承诺，造成拒单、投诉或资损。",
+          "action": "按现行会员规则改写",
+          "detail": "会员门槛或折扣与现行银卡2000/95折、金卡8000/9折不符"
+        }
+      ],
+      "primary_action": "按现行会员规则改写"
+    },
+    {
+      "id": "KB014",
+      "question": "有优惠券吗？",
+      "answer": "当前有满300减50和满600减120两种优惠券，可以在'我的优惠券'页面领取。",
+      "category": "优惠",
+      "severity": "高",
+      "issues": [
+        {
+          "type": "OUTDATED",
+          "impact": "自动回复会按过时规则承诺，造成拒单、投诉或资损。",
+          "action": "更新活动文案",
+          "detail": "优惠券面额与现行满200减20、满500减60不符"
+        }
+      ],
+      "primary_action": "更新活动文案"
+    },
+    {
+      "id": "KB015",
+      "question": "优惠券可以叠加使用吗？",
+      "answer": "可以的，每笔订单最多叠加3张优惠券。",
+      "category": "优惠",
+      "severity": "高",
+      "issues": [
+        {
+          "type": "OUTDATED",
+          "impact": "自动回复会按过时规则承诺，造成拒单、投诉或资损。",
+          "action": "改为不可叠加",
+          "detail": "现行优惠券不可叠加"
+        }
+      ],
+      "primary_action": "改为不可叠加"
+    },
+    {
+      "id": "KB016",
+      "question": "在线客服工作时间？",
+      "answer": "在线客服7x24小时全天候服务，随时可以咨询。",
+      "category": "客服",
+      "severity": "高",
+      "issues": [
+        {
+          "type": "OUTDATED",
+          "impact": "自动回复会按过时规则承诺，造成拒单、投诉或资损。",
+          "action": "改工作时间",
+          "detail": "在线客服并非 7x24，现行 9:00-22:00"
+        }
+      ],
+      "primary_action": "改工作时间"
+    },
+    {
+      "id": "KB032",
+      "question": "商品有保修吗？",
+      "answer": "",
+      "category": "售后",
+      "severity": "高",
+      "issues": [
+        {
+          "type": "INCOMPLETE",
+          "impact": "用户问到会得到空回复，自动回复会编或推诿。",
+          "action": "补全答案或下线该条目",
+          "detail": "答案为空"
+        }
+      ],
+      "primary_action": "补全答案或下线该条目"
+    },
+    {
+      "id": "KB037",
+      "question": "怎么注销账号？",
+      "answer": "",
+      "category": "账号",
+      "severity": "高",
+      "issues": [
+        {
+          "type": "INCOMPLETE",
+          "impact": "用户问到会得到空回复，自动回复会编或推诿。",
+          "action": "补全答案或下线该条目",
+          "detail": "答案为空"
+        }
+      ],
+      "primary_action": "补全答案或下线该条目"
+    },
+    {
+      "id": "KB039",
+      "question": "退货政策是什么？",
+      "answer": "支持30天无理由退货，所有退货运费商家承担。",
+      "category": "退货政策",
+      "severity": "高",
+      "issues": [
+        {
+          "type": "OUTDATED",
+          "impact": "自动回复会按过时规则承诺，造成拒单、投诉或资损。",
+          "action": "与 KB001 对齐后删除重复条目",
+          "detail": "无理由退货是 7 天不是 30 天"
+        },
+        {
+          "type": "DUPLICATE",
+          "impact": "同一问题多答案时，机器人会随机抓到错误政策。",
+          "action": "与 KB001 合并，只保留现行规则",
+          "detail": "问题全文重复：退货政策是什么？"
+        }
+      ],
+      "primary_action": "与 KB001 对齐后删除重复条目"
+    }
+  ],
+  "coverage_gaps": [
+    {
+      "id": "GAP-EMAIL",
+      "question": "邮件客服多久回复？",
+      "reason": "业务规则写明 24 小时内回复，知识库只有在线/电话。",
+      "action": "新增条目"
+    }
+  ]
+}

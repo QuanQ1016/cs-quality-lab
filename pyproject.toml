@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cs-quality-lab"
+version = "1.1.0"
+description = "客服 AI 质量实验室：幻觉检测、回复评估、工单趋势、知识库治理（Mock LLM）"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "AI Evaluation Candidate" }]
+dependencies = []
+
+[project.scripts]
+hallucination-guard = "hallucination_guard.cli:main"
+cs-quality = "cs_quality.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

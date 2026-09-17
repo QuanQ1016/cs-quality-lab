@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>客服工单趋势分析</title>
+<style>
+:root{--ink:#172033;--muted:#667085;--paper:#f4f6f9;--card:#fff;--navy:#14213d;
+--blue:#356ae6;--cyan:#2bb5a8;--red:#d64550}
+*{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);
+font:14px/1.5 Inter,"Segoe UI","Microsoft YaHei",sans-serif}
+.top{background:var(--navy);color:#fff;padding:42px max(6vw,24px) 78px}
+.eyebrow{color:#89a9f5;letter-spacing:.14em;font-size:12px;font-weight:700}
+h1{font-size:34px;margin:8px 0} .top p{color:#bdc7dc;margin:0}
+main{max-width:1180px;margin:-48px auto 56px;padding:0 24px}
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.metric,.panel{background:var(--card);border:1px solid #e7eaf0;border-radius:14px;
+box-shadow:0 8px 24px #14213d0d} .metric{padding:22px}
+.metric span{display:block;color:var(--muted)} .metric strong{font-size:28px}
+.grid{display:grid;gap:18px;margin-top:18px} .two{grid-template-columns:1fr 1fr}
+.panel{padding:24px} h2{font-size:18px;margin:0 0 16px}
+.bar-row{display:grid;grid-template-columns:140px 1fr 36px;gap:10px;align-items:center;margin:10px 0}
+.track{height:9px;background:#edf0f5;border-radius:9px;overflow:hidden}
+.track i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:9px}
+.wide{margin-top:18px} table{width:100%;border-collapse:collapse}
+th,td{padding:11px 10px;text-align:left;border-bottom:1px solid #edf0f5;vertical-align:top}
+th{color:var(--muted);font-size:12px} .pill{display:inline-block;padding:3px 8px;
+border-radius:99px;background:#edf2ff;color:#2857bf}
+.bad{color:var(--red);font-weight:700} .ok{color:#08765d;font-weight:700}
+.nav{margin:12px 0 0} .nav a{color:#c9d7ff;margin-right:16px}
+.foot{color:var(--muted);font-size:12px;margin-top:18px}
+@media(max-width:760px){.metrics,.two{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header class="top"><div class="eyebrow">OPS INTELLIGENCE</div>
+<h1>客服工单趋势分析</h1><p>Mock LLM 综述 · 规则发现异常 · 给主管看的优先级</p>
+<div class="nav"><a href="../index.html">总览</a></div></header>
+<main>
+<section class="metrics"><article class="metric"><span>工单量</span><strong>50</strong></article><article class="metric"><span>未关闭</span><strong>8</strong></article><article class="metric"><span>平均满意度</span><strong>2.36</strong></article><article class="metric"><span>平均处理小时</span><strong>19.7</strong></article></section>
+<section class="grid two"><article class="panel"><h2>问题类型</h2><div class="bar-row"><span>支付问题</span><div class="track"><i style="width:100.0%"></i></div><b>16</b></div><div class="bar-row"><span>退款退货</span><div class="track"><i style="width:81.2%"></i></div><b>13</b></div><div class="bar-row"><span>物流查询</span><div class="track"><i style="width:50.0%"></i></div><b>8</b></div><div class="bar-row"><span>商品咨询</span><div class="track"><i style="width:31.2%"></i></div><b>5</b></div><div class="bar-row"><span>账号问题</span><div class="track"><i style="width:25.0%"></i></div><b>4</b></div><div class="bar-row"><span>投诉</span><div class="track"><i style="width:25.0%"></i></div><b>4</b></div></article><article class="panel"><h2>需要主管关注的异常</h2><ul><li>支付问题后半段激增：6/1-6/5 仅 3 单，6/6-6/11 升至 13 单。</li><li>重复扣款复发：相关工单：T022, T030, T046, T050。T046 明确说上个月也发生过。</li><li>退款链路超时且差评扎堆：退款退货平均处理 45.2 小时，平均满意度 2.00。</li><li>垫付退货运费未报销：T042 仍未关闭或低满意。</li><li>自动回复未能解决问题：T026, T044 投诉机器人循环话术。</li><li>未关闭工单集中在高伤害场景：未关闭：T019(物流查询), T031(退款退货), T033(物流查询), T036(退款退货), T039(退款退货), T042(退款退货), T046(支付问题), T047(退款退货)</li></ul></article></section>
+<section class="panel wide"><h2>未关闭与高伤害工单</h2>
+<div style="overflow:auto"><table><thead><tr><th>工单</th><th>时间</th><th>分类</th><th>优先级</th><th>时长h</th><th>满意度</th><th>状态</th></tr></thead><tbody><tr><td>T007</td><td>2024-06-03 09:00</td><td>退款退货</td><td>高</td><td>96</td><td>1</td><td>已关闭</td></tr><tr><td>T010</td><td>2024-06-03 16:20</td><td>投诉</td><td>高</td><td>24</td><td>1</td><td>已关闭</td></tr><tr><td>T019</td><td>2024-06-05 15:45</td><td>物流查询</td><td>高</td><td>36</td><td>1</td><td>未关闭</td></tr><tr><td>T024</td><td>2024-06-06 16:00</td><td>投诉</td><td>高</td><td>48</td><td>1</td><td>已关闭</td></tr><tr><td>T030</td><td>2024-06-08 08:45</td><td>支付问题</td><td>高</td><td>6</td><td>1</td><td>已关闭</td></tr><tr><td>T031</td><td>2024-06-08 10:00</td><td>退款退货</td><td>高</td><td>120</td><td>1</td><td>未关闭</td></tr><tr><td>T033</td><td>2024-06-08 13:45</td><td>物流查询</td><td>中</td><td>48</td><td>2</td><td>未关闭</td></tr><tr><td>T034</td><td>2024-06-08 15:20</td><td>投诉</td><td>高</td><td>12</td><td>1</td><td>已关闭</td></tr><tr><td>T036</td><td>2024-06-09 10:45</td><td>退款退货</td><td>高</td><td>24</td><td>1</td><td>未关闭</td></tr><tr><td>T039</td><td>2024-06-09 15:45</td><td>退款退货</td><td>高</td><td>36</td><td>1</td><td>未关闭</td></tr><tr><td>T042</td><td>2024-06-10 11:20</td><td>退款退货</td><td>高</td><td>72</td><td>1</td><td>未关闭</td></tr><tr><td>T044</td><td>2024-06-10 14:30</td><td>投诉</td><td>中</td><td>8</td><td>1</td><td>已关闭</td></tr><tr><td>T046</td><td>2024-06-11 09:15</td><td>支付问题</td><td>高</td><td>6</td><td>1</td><td>未关闭</td></tr><tr><td>T047</td><td>2024-06-11 10:30</td><td>退款退货</td><td>高</td><td>96</td><td>1</td><td>未关闭</td></tr><tr><td>T050</td><td>2024-06-11 15:45</td><td>支付问题</td><td>高</td><td>8</td><td>1</td><td>已关闭</td></tr></tbody></table></div>
+</section>
+<p class="foot">0111 · 判断依据全部来自 tickets.json 字段统计。</p>
+</main></body></html>

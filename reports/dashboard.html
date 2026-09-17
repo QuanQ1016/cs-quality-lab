@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hallucination Guard · 检测报告</title>
+<style>
+:root{--ink:#172033;--muted:#667085;--paper:#f4f6f9;--card:#fff;--navy:#14213d;
+--blue:#356ae6;--cyan:#2bb5a8;--red:#d64550;--amber:#d98e04}
+*{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);
+font:14px/1.5 Inter,"Segoe UI","Microsoft YaHei",sans-serif}
+.top{background:var(--navy);color:white;padding:42px max(6vw,24px) 78px}
+.eyebrow{color:#89a9f5;letter-spacing:.14em;font-size:12px;font-weight:700}
+h1{font-size:34px;margin:8px 0} .top p{color:#bdc7dc;margin:0}
+main{max-width:1180px;margin:-48px auto 56px;padding:0 24px}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.metric,.panel{background:var(--card);border:1px solid #e7eaf0;border-radius:14px;
+box-shadow:0 8px 24px #14213d0d} .metric{padding:22px}
+.metric span{display:block;color:var(--muted)} .metric strong{font-size:30px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+.panel{padding:24px} h2{font-size:18px;margin:0 0 18px}
+.matrix{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.matrix div{padding:16px;border-radius:10px;background:#f7f9fc}
+.matrix b{display:block;font-size:24px} .bar-row{display:grid;
+grid-template-columns:150px 1fr 24px;gap:10px;align-items:center;margin:11px 0}
+.track{height:9px;background:#edf0f5;border-radius:9px;overflow:hidden}
+.track i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));
+border-radius:9px} .table-wrap{overflow:auto} table{width:100%;border-collapse:collapse}
+th,td{padding:12px 10px;text-align:left;border-bottom:1px solid #edf0f5}
+th{color:var(--muted);font-size:12px} code{color:var(--blue)}
+.pill{display:inline-block;padding:3px 8px;border-radius:99px;background:#edf2ff;color:#2857bf}
+.pill.critical{background:#ffe8ea;color:#a72530} .pill.high{background:#fff1d6;color:#935f00}
+.pill.none{background:#dcf7ed;color:#08765d} .tp,.tn{color:#08765d;font-weight:700}
+.fp,.fn{color:var(--red);font-weight:700} .wide{margin-top:18px}
+.foot{color:var(--muted);font-size:12px;margin-top:18px}
+@media(max-width:760px){.metrics,.grid{grid-template-columns:1fr 1fr}}
+@media(max-width:500px){.metrics,.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="top"><div class="eyebrow">EVIDENCE-GROUNDED QA</div>
+<h1>客服回复幻觉检测</h1><p>Mock LLM · 证据约束 · 全链路可复现</p></header>
+<main><section class="metrics"><article class="metric"><span>准确率</span><strong>100.0%</strong></article><article class="metric"><span>精确率</span><strong>100.0%</strong></article><article class="metric"><span>召回率</span><strong>100.0%</strong></article><article class="metric"><span>F1</span><strong>100.0%</strong></article></section>
+<section class="grid"><article class="panel"><h2>混淆矩阵</h2><div class="matrix">
+<div><span>真阳性 TP</span><b>18</b></div>
+<div><span>误报 FP</span><b>0</b></div>
+<div><span>漏检 FN</span><b>0</b></div>
+<div><span>真阴性 TN</span><b>2</b></div></div></article>
+<article class="panel"><h2>风险类型分布</h2><div class="bar-row"><span>FACT_CONTRADICTION</span><div class="track"><i style="width:100.0%"></i></div><b>6</b></div><div class="bar-row"><span>POLICY_CONTRADICTION</span><div class="track"><i style="width:66.7%"></i></div><b>4</b></div><div class="bar-row"><span>TOOL_USE_FABRICATION</span><div class="track"><i style="width:66.7%"></i></div><b>4</b></div><div class="bar-row"><span>UNSUPPORTED_CLAIM</span><div class="track"><i style="width:33.3%"></i></div><b>2</b></div><div class="bar-row"><span>通过</span><div class="track"><i style="width:33.3%"></i></div><b>2</b></div><div class="bar-row"><span>SAFETY_MISGUIDANCE</span><div class="track"><i style="width:16.7%"></i></div><b>1</b></div><div class="bar-row"><span>MATERIAL_OMISSION</span><div class="track"><i style="width:16.7%"></i></div><b>1</b></div></article></section>
+<section class="panel wide"><h2>20 条回复审计明细</h2><div class="table-wrap"><table>
+<thead><tr><th>ID</th><th>用户问题</th><th>检测结论</th><th>置信度</th><th>验证</th></tr></thead>
+<tbody><tr><td><code>h01</code></td><td>你们支持30天无理由退货吗？</td><td><span class="pill high">POLICY_CONTRADICTION</span></td><td>98%</td><td class="tp">TP</td></tr><tr><td><code>h02</code></td><td>这个耳机的蓝牙版本是多少？</td><td><span class="pill high">FACT_CONTRADICTION</span></td><td>97%</td><td class="tp">TP</td></tr><tr><td><code>h03</code></td><td>我的快递到哪了？</td><td><span class="pill high">TOOL_USE_FABRICATION</span></td><td>99%</td><td class="tp">TP</td></tr><tr><td><code>h04</code></td><td>能开发票吗？</td><td><span class="pill high">POLICY_CONTRADICTION</span></td><td>98%</td><td class="tp">TP</td></tr><tr><td><code>h05</code></td><td>有没有满300减50的优惠券？</td><td><span class="pill high">UNSUPPORTED_CLAIM</span></td><td>98%</td><td class="tp">TP</td></tr><tr><td><code>h06</code></td><td>这个包是真皮的吗？</td><td><span class="pill high">FACT_CONTRADICTION</span></td><td>97%</td><td class="tp">TP</td></tr><tr><td><code>h07</code></td><td>退货地址是什么？</td><td><span class="pill high">POLICY_CONTRADICTION</span></td><td>97%</td><td class="tp">TP</td></tr><tr><td><code>h08</code></td><td>多久能发货？</td><td><span class="pill high">POLICY_CONTRADICTION</span></td><td>97%</td><td class="tp">TP</td></tr><tr><td><code>h09</code></td><td>这款手机支持NFC吗？</td><td><span class="pill high">FACT_CONTRADICTION</span></td><td>98%</td><td class="tp">TP</td></tr><tr><td><code>h10</code></td><td>我昨天退的货什么时候能收到退款？</td><td><span class="pill high">TOOL_USE_FABRICATION</span></td><td>99%</td><td class="tp">TP</td></tr><tr><td><code>h11</code></td><td>你们有线下门店吗？</td><td><span class="pill high">FACT_CONTRADICTION</span></td><td>98%</td><td class="tp">TP</td></tr><tr><td><code>h12</code></td><td>可以货到付款吗？</td><td><span class="pill none">通过</span></td><td>96%</td><td class="tn">TN</td></tr><tr><td><code>h13</code></td><td>这个面膜孕妇能用吗？</td><td><span class="pill critical">SAFETY_MISGUIDANCE</span></td><td>99%</td><td class="tp">TP</td></tr><tr><td><code>h14</code></td><td>能帮我改一下收货地址吗？订单号DD20240520-1123</td><td><span class="pill critical">TOOL_USE_FABRICATION</span></td><td>99%</td><td class="tp">TP</td></tr><tr><td><code>h15</code></td><td>你们和XX品牌是一家吗？</td><td><span class="pill high">FACT_CONTRADICTION</span></td><td>98%</td><td class="tp">TP</td></tr><tr><td><code>h16</code></td><td>商品图片上的颜色准吗？</td><td><span class="pill none">通过</span></td><td>96%</td><td class="tn">TN</td></tr><tr><td><code>h17</code></td><td>这个充电头是Type-C接口吗？</td><td><span class="pill high">FACT_CONTRADICTION</span></td><td>97%</td><td class="tp">TP</td></tr><tr><td><code>h18</code></td><td>我要投诉，上次买的东西就是坏的</td><td><span class="pill high">TOOL_USE_FABRICATION</span></td><td>99%</td><td class="tp">TP</td></tr><tr><td><code>h19</code></td><td>有没有学生优惠？</td><td><span class="pill high">UNSUPPORTED_CLAIM</span></td><td>98%</td><td class="tp">TP</td></tr><tr><td><code>h20</code></td><td>这双鞋偏大还是偏小？</td><td><span class="pill medium">MATERIAL_OMISSION</span></td><td>94%</td><td class="tp">TP</td></tr></tbody></table></div></section>
+<p class="foot">报告由 Hallucination Guard 生成。嵌入数据校验值：10369 chars。</p>
+</main></body></html>

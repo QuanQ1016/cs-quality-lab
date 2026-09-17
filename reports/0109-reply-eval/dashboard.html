@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>自动回复质量评估</title>
+<style>
+:root{--ink:#172033;--muted:#667085;--paper:#f4f6f9;--card:#fff;--navy:#14213d;
+--blue:#356ae6;--cyan:#2bb5a8;--red:#d64550}
+*{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);
+font:14px/1.5 Inter,"Segoe UI","Microsoft YaHei",sans-serif}
+.top{background:var(--navy);color:#fff;padding:42px max(6vw,24px) 78px}
+.eyebrow{color:#89a9f5;letter-spacing:.14em;font-size:12px;font-weight:700}
+h1{font-size:34px;margin:8px 0} .top p{color:#bdc7dc;margin:0}
+main{max-width:1180px;margin:-48px auto 56px;padding:0 24px}
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.metric,.panel{background:var(--card);border:1px solid #e7eaf0;border-radius:14px;
+box-shadow:0 8px 24px #14213d0d} .metric{padding:22px}
+.metric span{display:block;color:var(--muted)} .metric strong{font-size:28px}
+.grid{display:grid;gap:18px;margin-top:18px} .two{grid-template-columns:1fr 1fr}
+.panel{padding:24px} h2{font-size:18px;margin:0 0 16px}
+.bar-row{display:grid;grid-template-columns:140px 1fr 36px;gap:10px;align-items:center;margin:10px 0}
+.track{height:9px;background:#edf0f5;border-radius:9px;overflow:hidden}
+.track i{display:block;height:100%;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:9px}
+.wide{margin-top:18px} table{width:100%;border-collapse:collapse}
+th,td{padding:11px 10px;text-align:left;border-bottom:1px solid #edf0f5;vertical-align:top}
+th{color:var(--muted);font-size:12px} .pill{display:inline-block;padding:3px 8px;
+border-radius:99px;background:#edf2ff;color:#2857bf}
+.bad{color:var(--red);font-weight:700} .ok{color:#08765d;font-weight:700}
+.nav{margin:12px 0 0} .nav a{color:#c9d7ff;margin-right:16px}
+.foot{color:var(--muted);font-size:12px;margin-top:18px}
+@media(max-width:760px){.metrics,.two{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header class="top"><div class="eyebrow">REPLY EVALUATION</div>
+<h1>自动回复质量评估</h1><p>准确 / 有用 / 语气 / 不瞎编 · Mock LLM · 人工标注只做校验</p>
+<div class="nav"><a href="../index.html">总览</a></div></header>
+<main>
+<section class="metrics"><article class="metric"><span>整体得分</span><strong>3.78/5</strong></article><article class="metric"><span>准确</span><strong>3.65</strong></article><article class="metric"><span>有用</span><strong>2.15</strong></article><article class="metric"><span>低分条数</span><strong>5</strong></article></section>
+<section class="grid two"><article class="panel"><h2>指标均分</h2><div class="bar-row"><span>accuracy</span><div class="track"><i style="width:73.0%"></i></div><b>3.65</b></div><div class="bar-row"><span>usefulness</span><div class="track"><i style="width:43.0%"></i></div><b>2.15</b></div><div class="bar-row"><span>tone</span><div class="track"><i style="width:80.0%"></i></div><b>4</b></div><div class="bar-row"><span>groundedness</span><div class="track"><i style="width:100.0%"></i></div><b>5</b></div></article><article class="panel"><h2>最差 3 条</h2><ul><li>case_01（3.0）：核心诉求是取件失败，却把责任推给用户</li><li>case_08（3.0）：把具体问题推回详情页</li><li>case_16（3.0）：把具体问题推回详情页</li></ul></article></section>
+<section class="panel wide"><h2>20 条自动回复评分</h2>
+<div style="overflow:auto"><table><thead><tr><th>ID</th><th>问题</th><th>准确</th><th>有用</th><th>语气</th><th>不瞎编</th><th>总分</th></tr></thead><tbody><tr><td>case_01</td><td>我的快递到了但是放错快递柜了，取不出来</td><td>2</td><td>1</td><td>4</td><td>5</td><td>3.0</td></tr><tr><td>case_02</td><td>这个充电宝能带上飞机吗</td><td>4</td><td>3</td><td>4</td><td>5</td><td>4.1</td></tr><tr><td>case_03</td><td>退款什么时候能到账</td><td>5</td><td>1</td><td>4</td><td>5</td><td>3.9</td></tr><tr><td>case_04</td><td>我买的蓝牙耳机左耳没声音了，才买三天</td><td>4</td><td>3</td><td>4</td><td>5</td><td>4.1</td></tr><tr><td>case_05</td><td>你们客服态度太差了等了20分钟都没人理我</td><td>4</td><td>4</td><td>4</td><td>5</td><td>4.35</td></tr><tr><td>case_06</td><td>优惠券怎么用不了</td><td>4</td><td>2</td><td>4</td><td>5</td><td>3.85</td></tr><tr><td>case_07</td><td>我收到短信说账号异地登录了是真的吗</td><td>4</td><td>1</td><td>3</td><td>5</td><td>3.5</td></tr><tr><td>case_08</td><td>这个手机壳是硅胶的还是塑料的</td><td>2</td><td>1</td><td>4</td><td>5</td><td>3.0</td></tr><tr><td>case_09</td><td>退货邮费谁出</td><td>4</td><td>2</td><td>4</td><td>5</td><td>3.85</td></tr><tr><td>case_10</td><td>刚下单还没发货能取消吗</td><td>5</td><td>4</td><td>4</td><td>5</td><td>4.65</td></tr><tr><td>case_11</td><td>买了两件衣服一件大了一件小了想换尺码</td><td>4</td><td>3</td><td>4</td><td>5</td><td>4.1</td></tr><tr><td>case_12</td><td>快递两天没更新了</td><td>4</td><td>2</td><td>4</td><td>5</td><td>3.85</td></tr><tr><td>case_13</td><td>我买的面膜成分表能发给我看看吗我皮肤敏感</td><td>4</td><td>2</td><td>4</td><td>5</td><td>3.85</td></tr><tr><td>case_14</td><td>你们能不能加个功能下单前能看实物视频</td><td>5</td><td>4</td><td>5</td><td>5</td><td>4.75</td></tr><tr><td>case_15</td><td>我上次买的东西收到是坏的这次又是坏的</td><td>4</td><td>3</td><td>4</td><td>5</td><td>4.1</td></tr><tr><td>case_16</td><td>你们首页推荐的那两款手机哪个好</td><td>2</td><td>1</td><td>4</td><td>5</td><td>3.0</td></tr><tr><td>case_17</td><td>我那个退货的事顺便看看快递到没到</td><td>4</td><td>2</td><td>4</td><td>5</td><td>3.85</td></tr><tr><td>case_18</td><td>那个扫地机器人用了两周就不工作了</td><td>4</td><td>2</td><td>4</td><td>5</td><td>3.85</td></tr><tr><td>case_19</td><td>我要买的那个包什么时候补货</td><td>2</td><td>1</td><td>4</td><td>5</td><td>3.0</td></tr><tr><td>case_20</td><td>退货流程太复杂了搞半天都不知道怎么操作</td><td>2</td><td>1</td><td>4</td><td>5</td><td>3.0</td></tr></tbody></table></div>
+</section>
+<p class="foot">0109 · 打分未使用 human_ref.json，仅在报告中对照人工分析。</p>
+</main></body></html>
